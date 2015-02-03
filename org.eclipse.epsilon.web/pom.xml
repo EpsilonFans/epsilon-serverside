@@ -1,0 +1,79 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>org.eclipse.epsilon.web</artifactId>
+	<packaging>war</packaging>
+
+	<parent>
+		<groupId>org.eclipse.epsilon</groupId>
+		<artifactId>epsilon-serverside</artifactId>
+		<version>1.x</version>
+	</parent>
+
+	<name>org.eclipse.epsilon.egl.web</name>
+	<description>
+		Web Support for Epsilon Languages
+	</description>
+	<url>http://www.eclipse.org/epsilon</url>
+
+
+	<dependencies>
+
+        <!-- Eclipse Epsilon -->
+		<dependency>
+			<groupId>org.eclipse.epsilon</groupId>
+			<artifactId>org.eclipse.epsilon.eol.engine</artifactId>
+			<version>1.x</version>		
+		</dependency>        
+		<dependency>
+			<groupId>org.eclipse.epsilon</groupId>
+			<artifactId>org.eclipse.epsilon.eol.tools</artifactId>
+			<version>1.x</version>		
+		</dependency>        
+		<dependency>
+			<groupId>org.eclipse.epsilon</groupId>
+			<artifactId>org.eclipse.epsilon.egl.engine</artifactId>
+			<version>1.x</version>		
+		</dependency>        
+        <dependency>
+			<groupId>org.eclipse.epsilon</groupId>
+			<artifactId>org.eclipse.epsilon.emc.emf</artifactId>
+			<version>1.x</version>
+        </dependency>
+        <dependency>
+			<groupId>org.eclipse.epsilon</groupId>
+			<artifactId>org.eclipse.epsilon.emc.muddle</artifactId>
+			<version>1.x</version>
+        </dependency>
+        <dependency>
+			<groupId>org.eclipse.epsilon</groupId>
+			<artifactId>org.eclipse.epsilon.emc.graphml</artifactId>
+			<version>1.x</version>
+			<exclusions>
+				<!-- avoid icu4j 2.6.1 : erroneous jar -->
+				<exclusion>
+            		<groupId>com.ibm.icu</groupId>
+	        	    <artifactId>icu4j</artifactId>
+		        </exclusion>
+			</exclusions>
+        </dependency>
+
+		<!-- use a newer version of icu4j -->
+		<dependency>
+            <groupId>com.ibm.icu</groupId>
+            <artifactId>icu4j</artifactId>
+            <version>3.4.4</version>
+        </dependency>
+		
+		<!-- for testing -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+ 
+</project>

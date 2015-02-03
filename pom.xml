@@ -1,0 +1,167 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<groupId>org.eclipse.epsilon</groupId>
+	<artifactId>epsilon-serverside</artifactId>
+	<version>1.x</version>
+	<name>Epsilon as a server-side scripting language</name>
+	<description>Epsilon as a server-side scripting language</description>
+	<packaging>pom</packaging>
+	
+	<modules>
+		<module>org.eclipse.epsilon.web</module>
+		<module>org.eclipse.epsilon.web.example</module>
+	</modules>
+	
+	<properties>
+	
+		<!-- java compiler configuration-->
+        <java.version.source>1.7</java.version.source>
+        <java.version.target>1.7</java.version.target>
+        <project.build.sourceEncoding>iso-8859-1</project.build.sourceEncoding>
+	
+		<!-- test web server configuration -->
+		<application.port>8080</application.port>        
+        <application.contextpath>/${project.artifactId}</application.contextpath>		
+		
+	</properties>
+	
+	<build>
+
+		<plugins>
+
+			<!-- Java compiler options -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <source>${java.version.source}</source>
+                    <target>${java.version.target}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <optimize>false</optimize>
+                    <debug>true</debug>
+                    <showDeprecation>true</showDeprecation>
+                </configuration>
+            </plugin>
+            			
+			<!-- To run the app: mvn jetty:run -->
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>9.2.3.v20140905</version>
+				<configuration>
+				    <scanIntervalSeconds>10</scanIntervalSeconds>
+                    <webAppConfig>
+                        <contextPath>${application.contextpath}</contextPath>
+                    </webAppConfig>
+					<connectors>
+						<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+							<port>${application.port}</port>
+						</connector>
+					</connectors>				    
+				</configuration>
+			</plugin>		
+
+			<!-- Do not deploy into the Maven Central -->
+			<plugin>
+				<!-- 
+					Some libraries are not in Central, and the transitive dependencies thus unresolvable. 
+					TODO: deploy if/when these libraries are in Central. 
+				-->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>2.7</version>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+			
+			<!-- IDE integration -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-eclipse-plugin</artifactId>
+                <version>2.8</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <useProjectReferences>false</useProjectReferences>
+                    <downloadSources>true</downloadSources>
+                    <wtpversion>2.0</wtpversion>
+                    <classpathContainers>
+                        <classpathContainer>
+                            org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7
+                        </classpathContainer>
+                    </classpathContainers>
+                    <packaging>${project.packaging}</packaging>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-idea-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <exclude>target</exclude>
+                    <downloadSources>true</downloadSources>
+                    <jdkLevel>${java.version.source}</jdkLevel>
+                    <jdkName>${java.version.target}</jdkName>
+                </configuration>
+            </plugin>			
+
+		</plugins>
+
+	</build>
+
+	<profiles>
+	
+		<!-- default profile: Servlet 2.5 -->
+		<profile>
+			<id>servlet-2.5</id>
+			<dependencies>
+				<dependency>
+					<groupId>javax.servlet</groupId>
+					<artifactId>servlet-api</artifactId>
+					<version>2.5</version>
+				</dependency>				
+			</dependencies>
+		</profile>
+		
+		<!-- Java 6 -->
+		<profile>
+			<id>javaee</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>			
+			<dependencies>
+					<!-- Web, Servlet API -->					
+					<dependency>
+		    			<groupId>javax</groupId>
+		    			<artifactId>javaee-web-api</artifactId>
+		    			<version>6.0</version>
+		    			<scope>provided</scope>
+					</dependency>		
+			</dependencies>
+		</profile>
+	
+	</profiles>
+
+	<repositories>
+	
+		<!-- Java repository : for JEE -->
+		<repository>
+		    <id>java.net2</id>
+		    <name>Repository hosting the jee6 artifacts</name>
+		    <url>http://download.java.net/maven/2</url>
+		</repository>			
+
+		<!-- TiCSw repository: Epsilon libraries not available in Maven Central -->
+		<repository>
+			<id>ticsw-mvn-repo</id>
+			<url>http://ticsw.github.io/mvn-repo/</url>
+		</repository>
+
+	</repositories>
+	
+</project>
