@@ -12,6 +12,12 @@
 		<version>1.x</version>
 	</parent>
 	
+	<name>org.eclipse.epsilon.egl.web.example</name>
+	<description>
+		Example Web Application using Epsilon Languages
+	</description>
+	<url>http://www.eclipse.org/epsilon</url>
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.eclipse.epsilon</groupId>
