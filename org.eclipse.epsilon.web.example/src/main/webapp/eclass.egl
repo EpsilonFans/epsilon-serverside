@@ -1,10 +1,14 @@
-[%import 'models.eol'; loadModels();%]
-
-[%var eClass = EClass.all.selectOne(c|c.name = request.getParameter('name'));%]
-
+[% import 'models.eol'; loadModels(); %]
+[% var eClass = EClass.all.selectOne(c|c.name = request.getParameter('name'));
+   if ( eClass.isUndefined() ) { %]
+EClass [%= request.getParameter('name') %] Not found.<br>
+<br>
+<input type="button" value="Back" onclick="window.history.back();" />
+[% } else { %]
 <h1>[%=eClass.name%]</h1>
 <ul>
 [%for (sf in eClass.eStructuralFeatures){%]
 	<li>[%=sf.name%] : <a href="eclass.egl?name=[%=sf.eType.name%]">[%=sf.eType.name%]</a>
 [%}%]
 </ul>
+[%}%]
