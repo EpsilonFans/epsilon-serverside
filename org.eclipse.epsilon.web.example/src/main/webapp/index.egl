@@ -1,9 +1,20 @@
 [%import 'models.eol'; loadModels();%]
+<html lang="en">
+<head>
+	<title>Metamodel description</title>	
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<meta charset="utf-8" />
+	<meta http-equiv="cache-control" content="no-store" />
+	<meta http-equiv="pragma" content="no-cache" />
+	<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+	<h1>Metamodel description</h1>
+	<p>Description of the EClasses in the <a href="Ecore.ecore">Ecore.ecore</a> metamodel.	
+<hr/> 
 
-<html>
 <ul>
 [%for (c in EClass.all){%]
 <li><a href="eclass.egl?name=[%=c.name%]">[%=c.name%]</a>
 [%}%]
 </ul>
-</html>

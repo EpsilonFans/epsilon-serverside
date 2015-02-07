@@ -1,11 +1,22 @@
-[% import 'models.eol'; loadModels(); %]
-[% var eClass = EClass.all.selectOne(c|c.name = request.getParameter('name'));
-   if ( eClass.isUndefined() ) { %]
+[%import 'models.eol'; loadModels();%]
+<html lang="en">
+<head>
+	<title>Metamodel description : [%= request.getParameter('name') %]</title>	
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<meta charset="utf-8" />
+	<meta http-equiv="cache-control" content="no-store" />
+	<meta http-equiv="pragma" content="no-cache" />
+	<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+[% var eClass = EClass.all.selectOne(c|c.name = request.getParameter('name')); %]
+[%   if ( eClass.isUndefined() ) { %]
 EClass [%= request.getParameter('name') %] Not found.<br>
 <br>
 <input type="button" value="Back" onclick="window.history.back();" />
 [% } else { %]
 <h1>[%=eClass.name%]</h1>
+<hr/>
 <ul>
 [%for (sf in eClass.eStructuralFeatures){%]
 	<li>[%=sf.name%] : <a href="eclass.egl?name=[%=sf.eType.name%]">[%=sf.eType.name%]</a>

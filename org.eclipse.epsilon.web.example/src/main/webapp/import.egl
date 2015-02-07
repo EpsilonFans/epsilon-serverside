@@ -1,3 +1,24 @@
 [%import 'models.eol'; loadModels();%]
+<html lang="en">
+<head>
+	<title>Elements in a Metamodel</title>	
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<meta charset="utf-8" />
+	<meta http-equiv="cache-control" content="no-store" />
+	<meta http-equiv="pragma" content="no-cache" />
+	<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+	<h1>Elements in a Metamodel</h1>
+	<p>Number of EClasses in the <a href="Ecore.ecore">Ecore.ecore</a> file.	
+<hr/> 
 
-[%=EClass.all.size()%]
+<ul>
+<li>
+	Number of EClasses: [%=EClass.all.size()%]
+</li>
+<li>
+	EClasses: [%=EClass.all.name.concat(", ")%]
+</li>	
+
+</body>
