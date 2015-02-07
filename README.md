@@ -17,7 +17,7 @@ Using Maven, you can create a web application including only Epsilon-compatible 
 		<dependency>
 			<groupId>org.eclipse.epsilon</groupId>
 			<artifactId>org.eclipse.epsilon.web</artifactId>
-			<version>1.x</version>
+			<version>1.2-SNAPSHOT</version>
 			<type>war</type>
 		</dependency>
 ```

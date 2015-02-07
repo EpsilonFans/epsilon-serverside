@@ -16,7 +16,7 @@ To include the Epsilon languages in your application, first you must add the dep
 		<dependency>
 		    <groupId>org.eclipse.epsilon</groupId>
 		    <artifactId>org.eclipse.epsilon.egl.web</artifactId>
-		    <version>1.x</version>
+		    <version>1.2-SNAPSHOT</version>
 		    <type>war</type>
 		</dependency>	
 		:
