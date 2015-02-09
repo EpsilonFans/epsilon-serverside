@@ -5,7 +5,7 @@
 	
 	<groupId>org.eclipse.epsilon</groupId>
 	<artifactId>epsilon-serverside</artifactId>
-	<version>1.2-SNAPSHOT</version>
+	<version>1.2.0</version>
 	<name>Epsilon as a server-side scripting language</name>
 	<description>Epsilon as a server-side scripting language</description>
 	<packaging>pom</packaging>
