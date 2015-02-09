@@ -22,7 +22,7 @@
 		<dependency>
 			<groupId>org.eclipse.epsilon</groupId>
 			<artifactId>org.eclipse.epsilon.web</artifactId>
-			<version>1.x</version>
+			<version>1.2.0</version>
 			<type>war</type>
 		</dependency>
 	</dependencies>
