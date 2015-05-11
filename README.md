@@ -35,7 +35,14 @@ Using Maven, you can run the application using the ``jetty:run`` goal in the ``o
 
 Using Eclipse m2e, you can run the application using a provided launcher file.
 
-1 Select the ``org.eclipse.epsilon.web.example`` project.
-2 Select the ``Run epsilon.web.example.launch`` file
-3 Right click on the file, and execute "Run As > Run epsilon.web.example"
+1. Select the ``org.eclipse.epsilon.web.example`` project.
+2. Select the ``Run epsilon.web.example.launch`` file
+3. Right click on the file, and execute "Run As > Run epsilon.web.example"
  
+ 
+### Branches in the Git repository
+
+There are many branches in the project's Git:
+
+* ``1.x``, is the original Epsilon EGL servlet organized as a Maven project
+* ``1.2.0``, is the project updated to the Epsilon libraries version 1.2  
